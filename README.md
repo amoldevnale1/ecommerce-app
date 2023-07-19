@@ -1,1 +1,1 @@
-# ecommerce-app
+# Basic features for ecommerce-app
