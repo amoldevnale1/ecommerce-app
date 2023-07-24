@@ -1,0 +1,10 @@
+.navbar {
+  height: 60px;
+}
+.navlink {
+  font-size: large;
+}
+.cart-icon {
+  font-size: x-large; 
+  cursor: pointer;
+}
