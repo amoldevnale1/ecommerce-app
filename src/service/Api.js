@@ -15,7 +15,16 @@ export const ApiService = {
       method: "get",
       url: `${url}`,
       headers: headers(config),
-    })
-      .then((response) => response.data);
+    }).then((response) => response.data);
+  },
+
+  post(url, data = {}, config = {}) {
+    const body = JSON.stringify(data);
+    return axios({
+      method: "POST",
+      url: `${url}`,
+      headers: headers(config),
+      data: body,
+    }).then((response) => response.data);
   },
 };

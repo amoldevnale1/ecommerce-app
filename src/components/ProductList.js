@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import "./ProductList.css";
 import { ApiService } from "../service/Api";
 import * as url from "../constants/urls";
+import { useDispatch } from "react-redux";
+import { ADD_TO_CART } from "../redux/actions/action";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -11,9 +13,22 @@ export default function ProductList() {
   useEffect(() => {
     getProductListData();
   }, []);
+
+  // fetch product list
   const getProductListData = async () => {
     const productListData = await ApiService.fetch(url.getAllProductList());
     setProducts(productListData.data);
+  };
+
+  const dispatch = useDispatch();
+
+  // add to cart
+  const sendProdToCartData = async (product) => {
+    await ApiService.post(url.addProductToCart(), { id: product.id }).then(
+      (response) => {
+        dispatch(ADD_TO_CART(response.line_items));
+      }
+    );
   };
 
   return (
@@ -25,14 +40,12 @@ export default function ProductList() {
             return (
               <Card
                 key={product.id}
-                style={{ width: "22rem", border: "none" }}
-                className="mx-2 mt-4 card_style"
+                className="mx-2 mt-4 card-style"
               >
                 <Card.Img
                   variant="top"
                   src={product.meta.image_url}
-                  style={{ height: "16rem" }}
-                  className="mt-3"
+                  className="mt-3 cart-img"
                 />
                 <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
@@ -40,7 +53,11 @@ export default function ProductList() {
                     Price : {product.price.formatted_with_symbol}
                   </Card.Text>
                   <div className="button_div d-flex justify-content-center">
-                    <Button variant="primary" className="col-lg-12">
+                    <Button
+                      variant="primary"
+                      className="col-lg-12"
+                      onClick={() => sendProdToCartData(product)}
+                    >
                       Add to Cart
                     </Button>
                   </div>

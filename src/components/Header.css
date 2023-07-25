@@ -8,3 +8,9 @@
   font-size: x-large; 
   cursor: pointer;
 }
+.badge-icon {
+  position: absolute;
+  margin-top: -10px;
+  border-radius: 15px;
+  font-size: 15px;
+}
