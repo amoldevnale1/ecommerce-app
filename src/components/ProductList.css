@@ -7,4 +7,10 @@
 }
 .cart-img {
   height: 16rem;
+  cursor: pointer;
+}
+.pagination {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
 }

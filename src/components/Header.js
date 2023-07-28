@@ -8,15 +8,18 @@ import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { ApiService } from "../service/Api";
 import * as url from "../constants/urls";
-import { ADD_TO_CART } from "../redux/actions/action";
+import { ADD_TO_CART, SET_LOADER } from "../redux/actions/action";
+
 
 export default function Header() {
 
   // get data from cart
   const dispatch = useDispatch();
   useEffect(() => {
-    ApiService.fetch(url.addProductToCart()).then((response) => {
+    dispatch(SET_LOADER(true));
+    ApiService.fetch(url.getCartData()).then((response) => {
       dispatch(ADD_TO_CART(response.line_items));
+      dispatch(SET_LOADER(false));
     });
   }, [dispatch]);
 

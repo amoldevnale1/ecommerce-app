@@ -1,5 +1,6 @@
 const INIT_STATE = {
   carts: [],
+  loader: false,
 };
 
 export const cartReducer = (state = INIT_STATE, action) => {
@@ -7,6 +8,12 @@ export const cartReducer = (state = INIT_STATE, action) => {
     case "ADD_CART":
       return {
         carts: action.payload,
+      };
+
+    case "LOADER":
+      return {
+        carts: state.carts,
+        loader: action.payload,
       };
 
     default:

@@ -1,0 +1,15 @@
+.prd-add-remove {
+  width: 100;
+  cursor: pointer;
+  background: #ddd;
+  color: #111;
+}
+.prd-dec {
+  font-size: 24;
+}
+.prd-qnty {
+  font-size: 22;
+}
+.prd-inc {
+  font-size: 24;
+}
