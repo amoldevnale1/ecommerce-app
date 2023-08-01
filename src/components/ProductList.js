@@ -19,15 +19,9 @@ export default function ProductList() {
     getProductListData();
   }, [currentPage]);
 
-  // for scroll top
-  useMemo(() => {
-    window.scrollTo({top: 0})
-  }, [currentPage]);
-
   // fetch product list
   const getProductListData = async () => {
     dispatch(SET_LOADER(true));
-
     const newUrl = new URL(url.getAllProductList());
     const params = {
       limit: "6",
@@ -36,7 +30,6 @@ export default function ProductList() {
     Object.keys(params).forEach((key) =>
       newUrl.searchParams.append(key, params[key])
     );
-
     const productListData = await ApiService.fetch(newUrl);
     setProducts(productListData.data);
     setTotalPages(productListData.meta);
@@ -56,6 +49,11 @@ export default function ProductList() {
     }
   };
 
+  // for scroll top
+  useMemo(() => {
+    window.scrollTo({top: 0})
+  }, [currentPage]);
+
   // add to cart
   const dispatch = useDispatch();
   const sendProdToCartData = async (product) => {
@@ -68,6 +66,7 @@ export default function ProductList() {
     );
   };
 
+  // view product details
   const viewProdDetails = async (product) => {
     navigate(`/productDetails/${product.id}`);
   };

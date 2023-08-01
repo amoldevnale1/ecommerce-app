@@ -10,9 +10,7 @@ import { ApiService } from "../service/Api";
 import * as url from "../constants/urls";
 import { ADD_TO_CART, SET_LOADER } from "../redux/actions/action";
 
-
 export default function Header() {
-
   // get data from cart
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,7 +21,7 @@ export default function Header() {
     });
   }, [dispatch]);
 
-  const getCartData = useSelector((store) => store.cartReducer.carts);
+  const getCartData = useSelector((store) => store.reducer.carts);
 
   return (
     <>
@@ -41,7 +39,6 @@ export default function Header() {
                 aria-hidden="true"
               ></i>
             </span>
-
             <span>
               {getCartData.length ? (
                 <Badge bg="primary" className="badge-icon">

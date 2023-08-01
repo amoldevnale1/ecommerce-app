@@ -7,10 +7,11 @@ import ProductList from "./components/ProductList";
 import Spinner from "react-bootstrap/Spinner";
 import { useSelector } from "react-redux";
 import ProductDetails from "./components/ProductDetails";
+import SomethingWrong from "./components/SomethingWrong";
 
 function App() {
   const [loader, setLoader] = useState(false);
-  const getLoaderValue = useSelector((store) => store.cartReducer.loader);
+  const getLoaderValue = useSelector((store) => store.reducer.loader);
 
   useEffect(() => {
     setLoader(getLoaderValue);
@@ -32,8 +33,11 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<ProductList />} />
-          <Route path="/productDetails/:productId" element={<ProductDetails />}
+          <Route
+            path="/productDetails/:productId"
+            element={<ProductDetails />}
           />
+          <Route path="*" element={<SomethingWrong />} />
         </Routes>
       </div>
     </div>

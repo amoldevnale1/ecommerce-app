@@ -13,3 +13,4 @@ export const SET_LOADER = (value) => {
     payload: value
   }
 }
+

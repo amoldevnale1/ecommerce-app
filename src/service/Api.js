@@ -26,4 +26,13 @@ export const ApiService = {
       data: body,
     }).then((response) => response.data);
   },
+
+  delete(url) {
+    return axios({
+      method: "DELETE",
+      url: `${url}`,
+      headers: headers(),
+    })
+      .then((response) => response.data);
+  },
 };
