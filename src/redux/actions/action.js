@@ -14,3 +14,11 @@ export const SET_LOADER = (value) => {
   }
 }
 
+// remove product
+export const REMOVE_CART = (id) => {
+  return {
+    type: 'RMV_CART',
+    payload: id
+  }
+}
+

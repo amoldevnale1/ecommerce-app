@@ -16,6 +16,13 @@ export const reducer = (state = INIT_STATE, action) => {
         loader: action.payload,
       };
 
+    case "RMV_CART" :
+      const data = state.carts.filter((prod) => prod.id !== action.payload);
+      return {
+        carts: data,
+        loader: state.loader,
+      }
+
     default:
       return state;
   }

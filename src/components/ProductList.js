@@ -76,7 +76,7 @@ export default function ProductList() {
       <div className="container mt-3">
         <h2 className="text-center">Product List</h2>
         <div className="row d-flex justify-content-center align-items-center">
-          {products?.map((product, index) => {
+          {products?.map((product) => {
             return (
               <Card key={product.id} className="mx-2 mt-4 card-style">
                 <Card.Img

@@ -20,7 +20,7 @@
   font-size: 15px;
   background: green !important;
   color: white !important;
-  padding: 2px 5px !important;
+  padding: 2px 8px !important;
   border-radius: 5px !important;
 }
 .prd-rating{
@@ -46,6 +46,7 @@
  cursor: pointer;
  background: #ddd !important;
  color: #111 !important;
+ height: 75% !important;
 }
 .buy-now-button {
   width: 75%;

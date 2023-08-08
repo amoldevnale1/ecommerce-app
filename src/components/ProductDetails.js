@@ -35,7 +35,7 @@ export default function ProductDetails() {
   // buy now button
   const navigate = useNavigate();
   const buyNow = () => {
-    toast.success("Product ordered successfully.!");
+    toast.success("Product buy successfully.!");
     setTimeout(() => {
       navigate("/");
     }, 6000);
@@ -50,7 +50,7 @@ export default function ProductDetails() {
           <div className="iteamsdetails">
             {productDetails?.map((prodDetails, index) => {
               return (
-                <>
+                <React.Fragment key={index}>
                   <div className="items-img">
                     <img src={prodDetails.meta.image_url} alt="" />
                   </div>
@@ -66,15 +66,13 @@ export default function ProductDetails() {
                       <Row>
                         <Col>
                           <p>
-                            <strong>Price</strong>:
-                            {prodDetails.price.formatted_with_symbol}
+                            <strong>Price</strong>: {prodDetails.price.formatted_with_symbol}
                           </p>
                         </Col>
                         <Col>
                           <p>
-                            <strong>Rating</strong>:
-                            <span className="star-icon">
-                              {prodDetails.meta.rating}
+                            <strong>Rating</strong>: <span className="star-icon">
+                                {prodDetails.meta.rating}
                               <i className="fa fa-star" aria-hidden="true"></i>
                             </span>
                           </p>
@@ -83,15 +81,14 @@ export default function ProductDetails() {
                       <Row>
                         <Col>
                           <p>
-                            <strong>Review</strong>: {prodDetails.meta.review}
+                            <strong>Review</strong>:  {prodDetails.meta.review}
                           </p>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
                           <p>
-                            <strong>Description</strong>:
-                            {prodDetails.description}
+                            <strong>Description</strong>: {prodDetails.description}
                           </p>
                         </Col>
                       </Row>
@@ -137,7 +134,7 @@ export default function ProductDetails() {
                       </Row>
                     </Table>
                   </div>
-                </>
+                </React.Fragment>
               );
             })}
           </div>
