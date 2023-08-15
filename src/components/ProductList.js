@@ -31,12 +31,14 @@ export default function ProductList() {
       newUrl.searchParams.append(key, params[key])
     );
     const productListData = await ApiService.fetch(newUrl);
-    setProducts(productListData.data);
-    setTotalPages(productListData.meta);
-    dispatch(SET_LOADER(false));
+    if(productListData) {
+      setProducts(productListData.data);
+      setTotalPages(productListData.meta);
+      dispatch(SET_LOADER(false));
+    }
   };
 
-  // iterate pagination no of total pages
+  // iterate pagination no. of total pages
   const setTotalPages = (paginationData) => {
     let totalPages = [];
     for (
@@ -60,8 +62,10 @@ export default function ProductList() {
     dispatch(SET_LOADER(true));
     await ApiService.post(url.addProductToCart(), { id: product.id }).then(
       (response) => {
-        dispatch(ADD_TO_CART(response.line_items));
-        dispatch(SET_LOADER(false));
+        if(response) {
+          dispatch(ADD_TO_CART(response.line_items));
+          dispatch(SET_LOADER(false));
+        }
       }
     );
   };

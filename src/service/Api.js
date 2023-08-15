@@ -1,9 +1,10 @@
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 export const headers = () => {
   return {
     "X-Authorization": "sk_test_533177223946e38b96739d5f093791f330f4fbb99d8ac",
-    Accept: "application/json",
+    "Accept": "application/json",
     "Content-Type": "application/json"
   };
 };
@@ -14,7 +15,10 @@ export const ApiService = {
       method: "GET",
       url: `${url}`,
       headers: headers(),
-    }).then((response) => response.data);
+    }).then((response) => response.data)
+    .catch((error) => {
+      toast.error(error.response.data.error.message);
+    });
   },
 
   post(url, data = {}) {
@@ -24,7 +28,10 @@ export const ApiService = {
       url: `${url}`,
       headers: headers(),
       data: body,
-    }).then((response) => response.data);
+    }).then((response) => response.data)
+    .catch((error) => {
+      toast.error(error.response.data.error.message);
+    });
   },
 
   delete(url) {
@@ -33,6 +40,9 @@ export const ApiService = {
       url: `${url}`,
       headers: headers(),
     })
-      .then((response) => response.data);
+      .then((response) => response.data)
+      .catch((error) => {
+        toast.error(error.response.data.error.message);
+      });
   },
 };

@@ -8,6 +8,8 @@ import Spinner from "react-bootstrap/Spinner";
 import { useSelector } from "react-redux";
 import ProductDetails from "./components/ProductDetails";
 import SomethingWrong from "./components/SomethingWrong";
+import CartDetails from "./components/CartDetails";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [loader, setLoader] = useState(false);
@@ -30,6 +32,7 @@ function App() {
         ""
       )}
       <div className={loader ? "app-content" : ""}>
+        <ToastContainer theme="colored" />
         <Header />
         <Routes>
           <Route path="/" element={<ProductList />} />
@@ -37,6 +40,7 @@ function App() {
             path="/productDetails/:productId"
             element={<ProductDetails />}
           />
+          <Route path="cartDetails" element={<CartDetails />}></Route>
           <Route path="*" element={<SomethingWrong />} />
         </Routes>
       </div>

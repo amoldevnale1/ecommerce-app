@@ -14,7 +14,7 @@ import { Button } from "react-bootstrap";
 
 export default function ProductDetails() {
   const [productDetails, setProductDetails] = useState([]);
-  const [quantity, setQunatity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
   let { productId } = useParams();
   const dispatch = useDispatch();
@@ -24,18 +24,20 @@ export default function ProductDetails() {
   }, []);
 
   // fetch product details data
-  const getProductDetails = () => {
+  function getProductDetails() {
     dispatch(SET_LOADER(true));
     ApiService.fetch(url.getProductDetails(productId)).then((response) => {
-      dispatch(SET_LOADER(false));
-      setProductDetails([response]);
+      if(response) {
+        dispatch(SET_LOADER(false));
+        setProductDetails([response]);
+      }
     });
   };
 
   // buy now button
   const navigate = useNavigate();
   const buyNow = () => {
-    toast.success("Product buy successfully.!");
+    toast.success("Order placed successfully.!");
     setTimeout(() => {
       navigate("/");
     }, 6000);
@@ -72,7 +74,7 @@ export default function ProductDetails() {
                         <Col>
                           <p>
                             <strong>Rating</strong>: <span className="star-icon">
-                                {prodDetails.meta.rating}
+                                {prodDetails.meta.rating} &nbsp;
                               <i className="fa fa-star" aria-hidden="true"></i>
                             </span>
                           </p>
@@ -104,7 +106,7 @@ export default function ProductDetails() {
                             {quantity > 1 ? (
                               <span
                                 className="prd-dec"
-                                onClick={() => setQunatity(quantity - 1)}
+                                onClick={() => setQuantity(quantity - 1)}
                               >
                                 -
                               </span>
@@ -116,7 +118,7 @@ export default function ProductDetails() {
                             <span className="prd-qnty">{quantity}</span>
                             <span
                               className="prd-inc"
-                              onClick={() => setQunatity(quantity + 1)}
+                              onClick={() => setQuantity(quantity + 1)}
                             >
                               +
                             </span>
