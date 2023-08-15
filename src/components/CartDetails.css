@@ -1,0 +1,26 @@
+.items-img img{
+  width: 15rem;
+}
+.second-section {
+  display: flex;
+  justify-content: center;
+}
+.sub-total {
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.082);
+  padding: 3% 10%;
+}
+.subtotal {
+  font-weight: bold;
+  font-style: italic;
+  font-size: larger;
+  margin-right: 75px;
+}
+.trash {
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+}

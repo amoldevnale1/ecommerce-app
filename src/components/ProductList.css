@@ -1,3 +1,19 @@
-.card_style:hover{
+.card-style:hover{
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.082);
+}
+.card-style {
+  width: 22rem;
+  border: none;
+}
+.cart-img {
+  height: 16rem;
+  cursor: pointer;
+}
+.pagination {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+.star-icon {
+  font-size: 13px;
 }
