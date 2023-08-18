@@ -19,11 +19,12 @@ export default function ProductDetails() {
   let { productId } = useParams();
   const dispatch = useDispatch();
 
+  // fetch product details data
   useEffect(() => {
     getProductDetails();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // fetch product details data
+  
   function getProductDetails() {
     dispatch(SET_LOADER(true));
     ApiService.fetch(url.getProductDetails(productId)).then((response) => {

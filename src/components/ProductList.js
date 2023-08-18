@@ -15,11 +15,12 @@ export default function ProductList() {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
+  // fetch product list
   useEffect(() => {
     getProductListData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
-  // fetch product list
   const getProductListData = async () => {
     dispatch(SET_LOADER(true));
     const newUrl = new URL(url.getAllProductList());
@@ -54,6 +55,7 @@ export default function ProductList() {
   // for scroll top
   useMemo(() => {
     window.scrollTo({top: 0})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   // add to cart
@@ -84,7 +86,6 @@ export default function ProductList() {
             return (
               <Card key={product.id} className="mx-2 mt-4 card-style">
                 <Card.Img
-                  variant="top"
                   src={product.meta.image_url}
                   className="mt-3 cart-img"
                   onClick={() => viewProdDetails(product)}

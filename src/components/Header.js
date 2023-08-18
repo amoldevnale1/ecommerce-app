@@ -17,22 +17,21 @@ export default function Header() {
   const [show, setShow] = useState(false);
   const target = useRef(null);
   const [price, setPrice] = useState(0);
-  const [prdDetails, setPrdDetails] = useState([]);
 
-  // get data from cart
+  // get data from cart through api
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(SET_LOADER(true));
     ApiService.fetch(url.getCartData()).then((response) => {
       if(response) {
-        setPrdDetails(response.line_items);
         dispatch(ADD_TO_CART(response.line_items));
         dispatch(SET_LOADER(false));
       }
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // get data from store
+  // get data from cart through store
   const getCartData = useSelector((store) => store.reducer.carts);
 
   // remove product from cart
@@ -79,7 +78,6 @@ export default function Header() {
             <span>
               <i
                 className="fa fa-cart-plus text-light cart-icon"
-                aria-hidden="true"
                 ref={target}
                 onClick={() => setShow(!show)}
               ></i>
@@ -100,7 +98,6 @@ export default function Header() {
             onHide={() => setShow(false)}
             placement="bottom"
             rootClose
-            className="over"
           >
             {getCartData.length ? (
               <div>

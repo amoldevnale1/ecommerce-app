@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -51,7 +51,7 @@ export default function CartDetails() {
   function getSubTotal() {
     let subTotal = 0;
     getCartData?.forEach(
-      (ele, index) => (subTotal = subTotal + ele.price.raw * ele.quantity)
+      (ele) => (subTotal = subTotal + ele.price.raw * ele.quantity)
     );
     return subTotal;
   }
@@ -209,8 +209,7 @@ export default function CartDetails() {
       ) : (
         ""
       )}
-      <br />
-      <br />
+      <br /><br />
     </>
   );
 }
